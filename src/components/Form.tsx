@@ -7,7 +7,12 @@ function Form() {
         calories: 0,
     });
 
-    const handleChange = (e) => {
+    //inferir el tipo de dato al evento
+    const handleChange = (
+        e:
+            | React.ChangeEvent<HTMLSelectElement>
+            | React.ChangeEvent<HTMLInputElement>
+    ) => {
         setActivity({ ...activity, [e.target.id]: e.target.value });
     };
 
