@@ -1,8 +1,51 @@
+import { categories } from "../data/categories";
 function Form() {
     return (
-        <div>
-            <p>Formulario</p>
-        </div>
+        <form className="space-y-5 bg-white shadow p-10 rounded-lg">
+            <div className="grid grid-cols-1 gap-3">
+                <label htmlFor="category" className="font-bold">
+                    Categoría:{" "}
+                </label>
+                <select
+                    className="border border-slate-300 p-2 rounded-lg w-full bg-white"
+                    id="category"
+                >
+                    <option>Selecciona la Categoria</option>
+                    {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="grid grid-cols-1 gap-3">
+                <label htmlFor="activity" className="font-bold">
+                    Actividad:{" "}
+                </label>
+                <input
+                    type="text"
+                    id="activity"
+                    placeholder="Ej. Fútbol"
+                    className="border border-slate-300 p-2 rounded-lg w-full bg-white"
+                />
+            </div>
+            <div className="grid grid-cols-1 gap-3">
+                <label htmlFor="calories" className="font-bold">
+                    Calorias:{" "}
+                </label>
+                <input
+                    type="number"
+                    id="calories"
+                    placeholder="Ej. 300 calorias"
+                    className="border border-slate-300 p-2 rounded-lg w-full bg-white"
+                />
+            </div>
+            <input
+                type="submit"
+                value="Guardar"
+                className="bg-gray-700 text-white hover:bg-gray-900 w-full p-2 font-bold cursor-pointer"
+            />
+        </form>
     );
 }
 
