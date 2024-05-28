@@ -1,8 +1,9 @@
 import { useState } from "react";
+import type { Activity } from "../types/index";
 import { categories } from "../data/categories";
 function Form() {
-    const [activity, setActivity] = useState({
-        category: "",
+    const [activity, setActivity] = useState<Activity>({
+        category: 0,
         name: "",
         calories: 0,
     });
@@ -13,7 +14,12 @@ function Form() {
             | React.ChangeEvent<HTMLSelectElement>
             | React.ChangeEvent<HTMLInputElement>
     ) => {
-        setActivity({ ...activity, [e.target.id]: e.target.value });
+        const isNumberField = ["category", "calories"].includes(e.target.id);
+
+        setActivity({
+            ...activity,
+            [e.target.id]: isNumberField ? +e.target.value : e.target.value,
+        });
     };
 
     return (
