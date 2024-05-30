@@ -39,7 +39,7 @@ function Form() {
                     value={activity.category}
                     onChange={handleChange}
                 >
-                    <option>Selecciona la Categoria</option>
+                    <option value='0'>Selecciona la Categoria</option>
                     {categories.map((category) => (
                         <option key={category.id} value={category.id}>
                             {category.name}
@@ -75,7 +75,7 @@ function Form() {
             </div>
             <input
                 type="submit"
-                value="Guardar"
+                value={activity.category === 0 ? "Guardar": activity.category === 1 ?"Guardar Comida" : "Guardar Ejercicio"}
                 className="bg-gray-700 text-white hover:bg-gray-900 w-full p-2 font-bold cursor-pointer disabled:opacity-10"
                 disabled={!isValidActivity()}
             />
