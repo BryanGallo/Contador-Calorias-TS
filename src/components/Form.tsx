@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import type { Activity } from "../types/index";
 import { categories } from "../data/categories";
 function Form() {
@@ -10,9 +10,7 @@ function Form() {
 
     //inferir el tipo de dato al evento
     const handleChange = (
-        e:
-            | React.ChangeEvent<HTMLSelectElement>
-            | React.ChangeEvent<HTMLInputElement>
+        e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>
     ) => {
         const isNumberField = ["category", "calories"].includes(e.target.id);
 
@@ -39,7 +37,7 @@ function Form() {
                     value={activity.category}
                     onChange={handleChange}
                 >
-                    <option value='0'>Selecciona la Categoria</option>
+                    <option value="0">Selecciona la Categoria</option>
                     {categories.map((category) => (
                         <option key={category.id} value={category.id}>
                             {category.name}
@@ -75,7 +73,13 @@ function Form() {
             </div>
             <input
                 type="submit"
-                value={activity.category === 0 ? "Guardar": activity.category === 1 ?"Guardar Comida" : "Guardar Ejercicio"}
+                value={
+                    activity.category === 0
+                        ? "Guardar"
+                        : activity.category === 1
+                        ? "Guardar Comida"
+                        : "Guardar Ejercicio"
+                }
                 className="bg-gray-700 text-white hover:bg-gray-900 w-full p-2 font-bold cursor-pointer disabled:opacity-10"
                 disabled={!isValidActivity()}
             />
