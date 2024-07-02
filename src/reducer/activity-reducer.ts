@@ -19,4 +19,5 @@ export const activityReducer = (
         //este codigo maneja la logica para manejar el state
         console.log(`$desde ${state} y ${action}`);
     }
+    return state
 };
