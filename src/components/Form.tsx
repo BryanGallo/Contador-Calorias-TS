@@ -1,17 +1,18 @@
 import { useState, ChangeEvent, Dispatch } from "react";
 import type { Activity } from "../types/index";
 import { categories } from "../data/categories";
-import { ActivityActions } from "../reducer/activity-reducer";
+import { ActivityActions } from '../reducer/activity-reducer';
 
 type FormProps = {
     dispatch: Dispatch<ActivityActions>;
 };
+const initialState: Activity = {
+    category: 1,
+    name: "",
+    calories: 0,
+};
 function Form({ dispatch }: FormProps) {
-    const [activity, setActivity] = useState<Activity>({
-        category: 0,
-        name: "",
-        calories: 0,
-    });
+    const [activity, setActivity] = useState(initialState);
 
     //inferir el tipo de dato al evento
     const handleChange = (
@@ -39,6 +40,7 @@ function Form({ dispatch }: FormProps) {
             type: "save-activity",
             payload: { newActivity: activity },
         });
+        setActivity(initialState);
     };
 
     return (
