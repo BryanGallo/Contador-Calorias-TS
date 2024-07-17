@@ -70,7 +70,7 @@ function Form({ dispatch }: FormProps) {
             </div>
             <div className="grid grid-cols-1 gap-3">
                 <label htmlFor="name" className="font-bold">
-                    Actividad:{" "}
+                    Actividad Realizada:{" "}
                 </label>
                 <input
                     type="text"
