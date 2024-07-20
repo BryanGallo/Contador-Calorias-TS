@@ -15,12 +15,12 @@ function App() {
                     </h1>
                 </div>
             </header>
-            <section className="bg-lime-500 py-20 px-5">
+            <section className="bg-lime-500 py-5 px-5">
                 <div className="max-w-4xl mx-auto">
                     <Form dispatch={dispatch} />
                 </div>
             </section>
-            <section className="bg-lime-500 py-20 px-5">
+            <section className="bg-lime-500 py-2 px-5">
                 <ActivityList activities={state.activities} />
             </section>
         </>
