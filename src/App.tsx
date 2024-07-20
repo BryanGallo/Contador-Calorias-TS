@@ -5,7 +5,6 @@ import ActivityList from "./components/ActivityList";
 
 function App() {
     const [state, dispatch] = useReducer(activityReducer, initialState);
-    console.log(state.activities);
     
     return (
         <>
