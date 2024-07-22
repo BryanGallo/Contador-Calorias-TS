@@ -103,7 +103,7 @@ function Form({ dispatch }: FormProps) {
                         ? "Guardar Comida"
                         : "Guardar Ejercicio"
                 }
-                className="bg-gray-700 text-white hover:bg-gray-900 w-full p-2 font-bold cursor-pointer disabled:opacity-10"
+                className="bg-gray-700 text-white hover:bg-gray-900 w-full p-2 font-bold cursor-pointer disabled:opacity-30"
                 disabled={!isValidActivity()}
             />
         </form>
