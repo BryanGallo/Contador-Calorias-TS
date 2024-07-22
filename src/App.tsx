@@ -20,7 +20,7 @@ function App() {
                     <Form dispatch={dispatch} />
                 </div>
             </section>
-            <section className="bg-lime-500 py-2 px-5">
+            <section className="py-2 px-5">
                 <ActivityList activities={state.activities} />
             </section>
         </>
