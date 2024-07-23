@@ -5,7 +5,7 @@ import ActivityList from "./components/ActivityList";
 
 function App() {
     const [state, dispatch] = useReducer(activityReducer, initialState);
-    
+
     return (
         <>
             <header className="bg-lime-600 py-3">
@@ -21,7 +21,10 @@ function App() {
                 </div>
             </section>
             <section className="py-2 px-5">
-                <ActivityList activities={state.activities} />
+                <ActivityList
+                    activities={state.activities}
+                    dispatch={dispatch}
+                />
             </section>
         </>
     );
