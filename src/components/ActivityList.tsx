@@ -57,6 +57,10 @@ const ActivityList = ({ activities, dispatch }: ActivityList) => {
                         </button>
                         <button
                             onClick={() => {
+                                const validation = confirm(
+                                    "Seguro quieres eliminar esta actividad"
+                                );
+                                if (!validation) return;
                                 dispatch({
                                     type: "delete-activity",
                                     payload: { id: activity.id },
