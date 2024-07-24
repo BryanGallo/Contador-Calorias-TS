@@ -22,6 +22,20 @@ export const activityReducer = (
     if (action.type === "save-activity") {
         //este codigo maneja la logica para manejar el state
         console.log(action.payload.newActivity);
+
+        if (state.activeId) {
+            const updateActivity = state.activities.map((activity) =>
+                activity.id === state.activeId
+                    ? { ...activity, ...action.payload.newActivity }
+                    : activity
+            );
+            return {
+                ...state,
+                activities: [...updateActivity],
+                activeId: "",
+            };
+        }
+
         return {
             ...state,
             activities: [...state.activities, action.payload.newActivity],
@@ -29,7 +43,6 @@ export const activityReducer = (
     }
     if (action.type === "set-activeId") {
         console.log(action.payload);
-        
         return {
             ...state,
             activeId: action.payload.id,
