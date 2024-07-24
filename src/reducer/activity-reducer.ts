@@ -23,22 +23,24 @@ export const activityReducer = (
         //este codigo maneja la logica para manejar el state
         console.log(action.payload.newActivity);
 
+        let updateActivities: Activity[] = [];
         if (state.activeId) {
-            const updateActivity = state.activities.map((activity) =>
+            updateActivities = state.activities.map((activity) =>
                 activity.id === state.activeId
-                    ? { ...activity, ...action.payload.newActivity }
+                    ? action.payload.newActivity
                     : activity
             );
-            return {
-                ...state,
-                activities: [...updateActivity],
-                activeId: "",
-            };
+        } else {
+            updateActivities = [
+                ...state.activities,
+                action.payload.newActivity,
+            ];
         }
 
         return {
             ...state,
-            activities: [...state.activities, action.payload.newActivity],
+            activities: updateActivities,
+            activeId: "",
         };
     }
     if (action.type === "set-activeId") {
