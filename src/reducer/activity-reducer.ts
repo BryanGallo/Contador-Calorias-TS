@@ -6,7 +6,10 @@ export type ActivityActions =
           payload: { newActivity: Activity };
       }
     | { type: "set-activeId"; payload: { id: Activity["id"] } }
-    | { type: "delete-activity"; payload: { id: Activity["id"] } };
+    | { type: "delete-activity"; payload: { id: Activity["id"] } }
+    | {
+          type: "restart-app";
+      };
 
 export type ActivityState = {
     activities: Activity[];
@@ -67,6 +70,16 @@ export const activityReducer = (
         return {
             ...state,
             activities: updateActivities,
+        };
+    }
+
+    if (action.type === "restart-app") {
+        console.log('restar');
+        
+        // en este caso como vamos a reinicair la aplicacion no colocamos ...state
+        return {
+            activities: [],
+            activeId: "",
         };
     }
 

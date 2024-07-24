@@ -17,6 +17,14 @@ function App() {
                     <h1 className="text-center text-lg font-bold text-white uppercase">
                         Contador de Calorias
                     </h1>
+                    <button
+                        className="bg-gray-800 hover:bg-gray-900 p-2 font-bold uppercase text-white cursor-pointer rounded-lg"
+                        onClick={() => {
+                            dispatch({ type: "restart-app" });
+                        }}
+                    >
+                        Reiniciar App
+                    </button>
                 </div>
             </header>
             <section className="bg-lime-500 py-5 px-5">
