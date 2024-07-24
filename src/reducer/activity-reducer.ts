@@ -1,4 +1,3 @@
-import { act } from "react";
 import type { Activity } from "../types";
 
 export type ActivityActions =
@@ -13,8 +12,14 @@ export type ActivityState = {
     activities: Activity[];
     activeId: Activity["id"];
 };
+
+//Esto pertenece al navegador por lo cual TypeScript no puede inferir
+const localStorageActivities = (): Activity[] => {
+    const activities = localStorage.getItem("activities");
+    return activities ? JSON.parse(activities) : [];
+};
 export const initialState: ActivityState = {
-    activities: [],
+    activities: localStorageActivities(),
     activeId: "",
 };
 export const activityReducer = (
