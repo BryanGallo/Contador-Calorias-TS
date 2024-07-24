@@ -36,7 +36,7 @@ const ActivityList = ({ activities, dispatch }: ActivityList) => {
                 activities.map((activity) => (
                     <div
                         key={activity.id}
-                        className="px-5 pb-5 pt-1 bg-white mt-5 rounded-lg flex justify-between items-center w-2/3 mx-auto"
+                        className="px-5 pb-5 pt-1 bg-white mt-5 rounded-lg flex justify-between items-center w-2/3 mx-auto shadow-xl"
                     >
                         <div className="space-y-2 flex flex-col ">
                             <p
