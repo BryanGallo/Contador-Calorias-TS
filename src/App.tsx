@@ -1,10 +1,14 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { activityReducer, initialState } from "./reducer/activity-reducer";
 import Form from "./components/Form";
 import ActivityList from "./components/ActivityList";
 
 function App() {
     const [state, dispatch] = useReducer(activityReducer, initialState);
+
+    useEffect(() => {
+        localStorage.setItem("activities", JSON.stringify(state.activities));
+    }, [state.activities]);
 
     return (
         <>
@@ -17,7 +21,7 @@ function App() {
             </header>
             <section className="bg-lime-500 py-5 px-5">
                 <div className="max-w-4xl mx-auto">
-                    <Form dispatch={dispatch} state={state}/>
+                    <Form dispatch={dispatch} state={state} />
                 </div>
             </section>
             <section className="py-4 pb-10 px-5">
