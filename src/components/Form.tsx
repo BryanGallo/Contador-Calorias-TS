@@ -1,11 +1,13 @@
-import { useState, ChangeEvent, Dispatch } from "react";
+import { useState, useEffect, ChangeEvent, Dispatch } from "react";
 import { v4 as uuidv4 } from "uuid";
 import type { Activity } from "../types/index";
+import type { ActivityState } from "../reducer/activity-reducer";
 import { categories } from "../data/categories";
 import { ActivityActions } from "../reducer/activity-reducer";
 
 type FormProps = {
     dispatch: Dispatch<ActivityActions>;
+    state: ActivityState;
 };
 const initialState: Activity = {
     id: uuidv4(),
@@ -13,9 +15,19 @@ const initialState: Activity = {
     name: "",
     calories: 0,
 };
-function Form({ dispatch }: FormProps) {
+function Form({ dispatch, state }: FormProps) {
     const [activity, setActivity] = useState(initialState);
 
+    useEffect(() => {
+        if (state.activeId) {
+            const selectActivity = state.activities.filter(
+                (stateActivity) => stateActivity.id === state.activeId
+            );
+
+            console.log(selectActivity);
+            setActivity(selectActivity[0]);
+        }
+    }, [state.activeId]);
     //inferir el tipo de dato al evento
     const handleChange = (
         e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>

@@ -17,10 +17,10 @@ function App() {
             </header>
             <section className="bg-lime-500 py-5 px-5">
                 <div className="max-w-4xl mx-auto">
-                    <Form dispatch={dispatch} />
+                    <Form dispatch={dispatch} state={state}/>
                 </div>
             </section>
-            <section className="py-2 px-5">
+            <section className="py-4 pb-10 px-5">
                 <ActivityList
                     activities={state.activities}
                     dispatch={dispatch}
