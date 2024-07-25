@@ -51,7 +51,13 @@ const ActivityList = ({ activities, dispatch }: ActivityList) => {
                             <p className="text-2xl font-black ml-5">
                                 {activity.name}
                             </p>
-                            <p className="text-4xl font-black text-lime-500 ml-5">
+                            <p
+                                className={`text-4xl font-black ml-5 ${
+                                    activity.category === 1
+                                        ? "text-orange-500"
+                                        : "text-lime-500"
+                                }`}
+                            >
                                 {activity.calories} <span>Calorias</span>
                             </p>
                         </div>
